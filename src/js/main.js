@@ -5,7 +5,7 @@ import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 const blobSasUrl = 'https://azcogtoragebineli1.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-07-28T23:09:52Z&st=2023-06-27T15:09:52Z&spr=https&sig=JCi5ZJwenF8%2B2A1%2F%2BJ0AzTa2HAPTewD0tNoY6LuIZu8%3D';
 
 // URL de la fonction negotiate
-const negotiateUrl = '';
+const negotiateUrl = 'https://azcogfuncapp.azurewebsites.net/api/';
 
 // Nom du conteneur
 const containerName = 'images';
@@ -51,7 +51,7 @@ const uploadFiles = async () => {
 const connect = () => {
 // 1. Création de la connection au serveur Azure SignalR Service
 const connection = new HubConnectionBuilder()
-    .withUrl('xxxxxx')
+    .withUrl(negotiateUrl)
     .withAutomaticReconnect()
     .configureLogging(LogLevel.Information)
     .build()
