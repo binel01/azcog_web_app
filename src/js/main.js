@@ -1,5 +1,5 @@
 import { BlobServiceClient } from '@azure/storage-blob';
-import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
 // Clé de signature d'accès partagée
 const blobSasUrl = 'https://azcogtoragebineli1.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-07-28T23:09:52Z&st=2023-06-27T15:09:52Z&spr=https&sig=JCi5ZJwenF8%2B2A1%2F%2BJ0AzTa2HAPTewD0tNoY6LuIZu8%3D';
@@ -19,7 +19,7 @@ const containerClient = blobserviceClient.getContainerClient(containerName);
 const uploadForm = document.getElementById('uploadForm');
 const fileInput = document.getElementById('file-input');
 const status = document.getElementById('status');
-let messages = document.getElementById('messages');
+let messagesElement = document.getElementById('messages');
 
 const reportStatus = message => {
     status.innerHTML = `${message}<br>`;
@@ -54,7 +54,7 @@ const connection = new HubConnectionBuilder()
     .withUrl(negotiateUrl)
     .withAutomaticReconnect()
     .configureLogging(LogLevel.Information)
-    .build()
+    .build();
 
 // 2. Ecoute des messages venant du serveur web (Fonction Azure) et les affiche dans la page Html
 connection.on('newMessage', (messages) => {
@@ -66,9 +66,9 @@ connection.on('newMessage', (messages) => {
                 <p class="desc-en">${messageJson.description}</p>
                 <p class="desc-fr">${messageJson.confidence}</p>
             </div> 
-        `
+        `;
     
-        messages.innerHTML += messageHtml;
+        messagesElement.innerHTML += messageHtml;
     }
 });
 
@@ -81,7 +81,7 @@ connection.onclose(() => {
 // 4. Démarrage de la connection
 connection.start()
     .then(() => {
-        console.log("SignalR connection established");
+        console.log('SignalR connection established');
     });
 };
 
