@@ -19,7 +19,7 @@ const containerClient = blobserviceClient.getContainerClient(containerName);
 const uploadForm = document.getElementById('uploadForm');
 const fileInput = document.getElementById('file-input');
 const status = document.getElementById('status');
-let messagesElement = document.getElementById('messages');
+//let messagesElement = document.getElementById('messages');
 
 const reportStatus = message => {
     status.innerHTML = `${message}<br>`;
@@ -59,22 +59,30 @@ const connection = new HubConnectionBuilder()
 // 2. Ecoute des messages venant du serveur web (Fonction Azure) et les affiche dans la page Html
 connection.on('newMessage', (messages) => {
     // Parser le message reçu au format JSON
-    let messageJson = JSON.parse(messages);
+    let message_str = JSON.parse(messages);
+    // Il faut parser une seconde fois pour obtenir un objet JSON
+    let messageJson = JSON.parse(message_str);
     console.log(messageJson);
+
     displayImageDescription(messageJson);
 });
 
+/**
+ * Fonction permettant d'afficher l'image et sa description dans la page web
+ * @param {Object} image Image qui doit être affichée dans la page web
+ */
 function displayImageDescription(image) {
-    // Ajouter le message reçu à la page HtML
-    const new_image = image;
-    console.log(new_image);
-    let messageHtml = `<div class="images--list--item">
-                            <img src="${image['image_url']}" alt="" class="img">
-                            <p class="desc-en">${image['description']}</p>
-                            <p class="desc-fr">${image['confidence']}</p>
-                        </div>`;
+    // Convertir confidence en float à 2 décimales près et en pourcentage
+    let valeur = image.confidence;
+    let arrondi = valeur.toFixed(4); // Arrondir à 2 décimales
+    let pourcentage = (arrondi * 100).toFixed(2) + '%'; // Convertir en pourcentage
 
-    messagesElement.innerHTML += messageHtml;
+    let tableElement = document.getElementById('images-table');
+    let row = tableElement.insertRow();
+    row.insertCell().innerHTML = `<img src="${image.image_url}" alt="" class="img desc">`;
+    row.insertCell().innerHTML = `<span class="desc">${image.description}</span>`;
+    row.insertCell().innerHTML = `<span class="desc">${pourcentage}</span>`;
+
 }
 
 // 3. Lorsque la connexion est refermée, relancer la connexion

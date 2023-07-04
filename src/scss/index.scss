@@ -24,19 +24,16 @@ h1, h2 {
     overflow: scroll;
 }
 
-.images {
+.desc {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
 
-    &--list {
-        display: flex;
-        flex-direction: column;
-
-        &--item {
-            display: flex;
-            flex-direction: row;
-            margin-right: 10px;
-            flex-wrap: wrap;
-            background-color: antiquewhite;
-        }
-    }
+.img {
+    height: 100px;
+    width: 100px;
+    border-radius: 5%;
 }
 
