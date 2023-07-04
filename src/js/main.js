@@ -58,19 +58,24 @@ const connection = new HubConnectionBuilder()
 
 // 2. Ecoute des messages venant du serveur web (Fonction Azure) et les affiche dans la page Html
 connection.on('newMessage', (messages) => {
-    for (const message of messages) {
-        let messageJson = JSON.parse(message);
-        let messageHtml = `
-            <div class="images--list--item">
-                <img src="${messageJson.image_url}" alt="" class="img">
-                <p class="desc-en">${messageJson.description}</p>
-                <p class="desc-fr">${messageJson.confidence}</p>
-            </div> 
-        `;
-    
-        messagesElement.innerHTML += messageHtml;
-    }
+    // Parser le message reçu au format JSON
+    let messageJson = JSON.parse(messages);
+    console.log(messageJson);
+    displayImageDescription(messageJson);
 });
+
+function displayImageDescription(image) {
+    // Ajouter le message reçu à la page HtML
+    const new_image = image;
+    console.log(new_image);
+    let messageHtml = `<div class="images--list--item">
+                            <img src="${image['image_url']}" alt="" class="img">
+                            <p class="desc-en">${image['description']}</p>
+                            <p class="desc-fr">${image['confidence']}</p>
+                        </div>`;
+
+    messagesElement.innerHTML += messageHtml;
+}
 
 // 3. Lorsque la connexion est refermée, relancer la connexion
 connection.onclose(() => {
