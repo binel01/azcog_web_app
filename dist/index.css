@@ -1,0 +1,35 @@
+body {
+  width: 80%;
+  margin: auto;
+}
+body header {
+  background-color: beige;
+  padding: 10px 0px;
+}
+body header h1 {
+  text-align: center;
+}
+
+h1, h2 {
+  color: #16a085;
+}
+
+#status {
+  height: 80px;
+  width: 593px;
+  overflow: scroll;
+}
+
+.images--list {
+  display: flex;
+  flex-direction: column;
+}
+.images--list--item {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9zY3NzL2luZGV4LnNjc3MiLCJpbmRleC5jc3MiLCIuLi9zcmMvc2Nzcy9fdmFyaWFibGVzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDSSxVQUFBO0VBQ0EsWUFBQTtBQ0RKO0FER0k7RUFDSSx1QkFBQTtFQUNBLGlCQUFBO0FDRFI7QURHUTtFQUNJLGtCQUFBO0FDRFo7O0FETUE7RUFDSSxjRWpCTTtBRGNWOztBRE1BO0VBQ0ksWUFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtBQ0hKOztBRFFJO0VBQ0ksYUFBQTtFQUNBLHNCQUFBO0FDTFI7QURPUTtFQUNJLGFBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLDhCQUFBO0FDTFoiLCJmaWxlIjoiaW5kZXguY3NzIn0= */

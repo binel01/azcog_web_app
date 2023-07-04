@@ -1,0 +1,42 @@
+@import '_variables.scss';
+
+body {
+    width: 80%;
+    margin: auto;
+
+    header {
+        background-color: beige;
+        padding: 10px 0px;
+    
+        h1 {
+            text-align: center;
+        }
+    }
+}
+
+h1, h2 {
+    color: $primary;
+}
+
+#status {
+    height: 80px;
+    width: 593px;
+    overflow: scroll;
+}
+
+.images {
+
+    &--list {
+        display: flex;
+        flex-direction: column;
+
+        &--item {
+            display: flex;
+            flex-direction: row;
+            margin-right: 10px;
+            flex-wrap: wrap;
+            background-color: antiquewhite;
+        }
+    }
+}
+
