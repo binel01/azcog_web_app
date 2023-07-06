@@ -22,13 +22,25 @@
                 </select>
             </div>
 
+            <div class="utilisation">
+                <h2>Utilisation</h2>
+                <ol>
+                    <li>Ouvrir le lien dans le navigateur</li>
+                    <li>Attendre que le statut affiche : <strong>Connecté au serveur</strong></li>
+                    <li>Une fois que l’application est connectée, vous pouvez téléverser votre image</li>
+                    <li>Une fois le téléversement terminé, le statut sera : <strong>Image téléversée</strong></li>
+                    <li>Une fois l’image téléversée, il faudra patienter quelques secondes pour voir le statut : <strong>la description de l’image est reçue</strong></li>
+                    <li>Vous verrez apparaître dans le tableau en dessous l’image, sa description</li>
+                </ol>
+            </div>
+
         </header>
 
-        <section class="upload">
+        <section>
             <h2>Choisissez l'image à analyser</h2>
-            <form id="uploadForm">
+            <form id="uploadForm" enctype="multipart/form-data">
                 <input type="file" name="image" id="file-input">
-                <button type="submit" id="submit">Uploader l'image</button>
+                <button type="button" id="submit">Uploader l'image</button>
             </form>
             <p><b>Statut</b></p>
             <p id="status"></p>

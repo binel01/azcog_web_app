@@ -20,6 +20,7 @@ const containerClient = blobserviceClient.getContainerClient(containerName);
 const uploadForm = document.getElementById('uploadForm');
 const fileInput = document.getElementById('file-input');
 const status = document.getElementById('status');
+const submitBtn = document.getElementById('submit');
 //let messagesElement = document.getElementById('messages');
 
 /**
@@ -128,10 +129,18 @@ const connect = async () => {
         });
 };
 
-uploadForm.addEventListener('submit', (event) => {
+submitBtn.addEventListener('click', (event) => {
     event.preventDefault();
+
+
+    const eventSubmit = new Event('submit', {bubbles: true, cancelable: true});
+    uploadForm.dispatchEvent(eventSubmit);
+    //uploadForm.submit();
+
     uploadFiles();
 });
+
+
 
 
 document.addEventListener('DOMContentLoaded', async () => {
