@@ -13,6 +13,15 @@
             <h1>Azure Cognitive</h1>
             <p>Ce site web vous permet d'uploader une image et d'obtenir sa 
                 description via Azure Cognitive Services -> Computer Vision -> Image Analysis</p>
+            <div class="language">
+                <select name="lang-select" id="select-language">
+                    <option value="fr" selected>Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+
         </header>
 
         <section class="upload">
@@ -21,7 +30,7 @@
                 <input type="file" name="image" id="file-input">
                 <button type="submit" id="submit">Uploader l'image</button>
             </form>
-            <p><b>Statut de l'upload:</b></p>
+            <p><b>Statut</b></p>
             <p id="status"></p>
         </section>
 
@@ -30,7 +39,7 @@
             <table id="images-table">
                 <thead>
                     <th>Image</th>
-                    <th>Description EN</th>
+                    <th>Description</th>
                     <th>Précision</th>
                 </thead>
                 <tbody>
